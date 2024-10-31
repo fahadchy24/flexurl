@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ShortUrl extends Model
 {
     protected $fillable = [
-        'user_id', 'long_url', 'short_url', 'visit_count'
+        'user_id', 'long_url', 'short_url', 'visit_count',
     ];
 
     public function user(): BelongsTo

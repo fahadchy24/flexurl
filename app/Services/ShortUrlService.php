@@ -14,7 +14,7 @@ class ShortUrlService
             ->where('user_id', Auth::id())
             ->first();
 
-        if (!$existingUrlForUser) {
+        if (! $existingUrlForUser) {
             $new_url = ShortUrl::create([
                 'user_id' => Auth::id(),
                 'long_url' => $data['long_url'],
@@ -22,7 +22,7 @@ class ShortUrlService
 
             $short_url = Str::random(6);
             $new_url->update([
-                'short_url' => $short_url
+                'short_url' => $short_url,
             ]);
         }
 

@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'min:8'],
         ];
     }
@@ -34,7 +34,7 @@ class RegisterRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'password' => Hash::make($this->password)
+            'password' => Hash::make($this->password),
         ]);
     }
 }

@@ -12,6 +12,7 @@ Route::get('/{url}', function ($url) {
     if ($short_url) {
         return redirect()->to(url($short_url->long_url));
     }
+
     return redirect()->to(url('/'));
 
 })->name('short-urls.goto');

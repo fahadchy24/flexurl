@@ -10,9 +10,7 @@ use Illuminate\Http\JsonResponse;
 
 class ShortUrlController extends Controller
 {
-    public function __construct(protected ShortUrlService $shortUrlService)
-    {
-    }
+    public function __construct(protected ShortUrlService $shortUrlService) {}
 
     public function store(ShortUrlRequest $request): JsonResponse
     {
@@ -24,7 +22,7 @@ class ShortUrlController extends Controller
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
             ]);
         }
     }

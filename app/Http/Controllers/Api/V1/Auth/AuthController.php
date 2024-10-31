@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
-use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +17,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'User created successfully',
-            'data' => $user
+            'data' => $user,
         ]);
     }
 
@@ -26,9 +25,9 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!Auth::attempt($credentials)) {
+        if (! Auth::attempt($credentials)) {
             return response()->json([
-                'message' => 'User not found'
+                'message' => 'User not found',
             ], 401);
         }
 
@@ -38,15 +37,16 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Login successfully',
             'access_token' => $token,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
         ]);
     }
 
     public function logout(): JsonResponse
     {
         Auth::user()->tokens()->delete();
+
         return response()->json([
-            'message' => 'Successfully logged out'
+            'message' => 'Successfully logged out',
         ]);
     }
 }

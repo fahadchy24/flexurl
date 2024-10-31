@@ -18,7 +18,6 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
         Route::post('short-urls', [ShortUrlController::class, 'store'])->name('short-urls.store');
         Route::get('short-urls', [ShortUrlController::class, 'userUrls'])->name('short-urls.show');
 
-
         Route::post('logout', [AuthController::class, 'logout']);
     });
 });
